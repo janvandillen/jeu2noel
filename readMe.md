@@ -1,14 +1,18 @@
+![Christmas](https://c8.alamy.com/compfr/dnm0cx/retro-8-bit-style-jeu-video-arcade-pixel-art-noel-le-pere-noel-en-traineau-avec-merry-xmas-message-dnm0cx.jpg)
+
 # Santa Claus & the christmas flakes
 
 ## Description
-Santa Claus & the christmas Flakes is a game where a santa needs to pick as many flakes as possible to save christmas. 
-He will need to avoid 
+Santa Claus & the snow Flakes is a game where a santa needs to catch as many flakes as possible to save christmas. 
+The snow flakes, and bombs are dropping from the sky. 
+The task is not as easy as it seems, he will need to avoid the dropping bombs. 
+If other level are created, the santa clause will have to avoid element at his level. 
+
 
 
 ## MVP (DOM - CANVAS)
 A santa Claus is picking snow flakes dropping from the sky. he can move in line fom left to right. 
-Dropping elements are snow flakes & bad elements 
-? should he be able to go up or not ?  
+Dropping elements are snow flakes & bombs.  
 The game is over when the player eat 3 "bad elements". 
 The game is won whenever the player reaches 20 points.
 
@@ -18,18 +22,18 @@ The game is won whenever the player reaches 20 points.
 2. main.js
 3. game.js
 4. player.js
-5. obstacle.js
+5. elements.js
 
 ### 1. index.html file
 
 ### 2. Main file
 
-- buildDom
 - createStartScreen / removeStartScreen
 - createGameScreen / removeGameScreen
-- createGameOverScreen / removeGameOverScreen
+- createGameOverScreen / removeGameOverScreen 
 - createWinScreen / removeWinScreen
 - startGame / endGame
+(Create the "go to next level" screen)
 
 ### 3. Game Constructor
 
@@ -51,9 +55,6 @@ The game is won whenever the player reaches 20 points.
 - start
 - startLoop
 - checkCollision
-- checkOtherSide
-- checkIfBonusWon
-- checkTime
 - win
 - gameWon / gameOver
 - printLives
@@ -75,13 +76,12 @@ The game is won whenever the player reaches 20 points.
 **Methods**
 - draw
 - move
-- collidedWithObstacle
+- Catch Element
 - collidedWithScreen
-- catchedBonus
 - removeLife
 - addLife
 
-### 5. Obstacle Constructor
+### 5. Bad Element
 
 **Properties**
 - canvas
@@ -99,20 +99,6 @@ The game is won whenever the player reaches 20 points.
 - draw
 - move
 
-### 6. Bonus Constructor
-
-**Properties**
-- canvas
-- ctx
-- size
-- x position
-- y position
-- image
-
-**Methods**
-- draw
-- move
-
 
 ## States and States Transitions
 - startScreen
@@ -120,8 +106,8 @@ The game is won whenever the player reaches 20 points.
   - Goes to gameScreen when Start button is clicked
 - gameScreen
   - Game running while lives > 0
-  - Goes to gameoverScreen if lives < 0 or if time > 1min
-  - Goes to winScreen if Players x position <= 40 ("the other side")
+  - Goes to gameoverScreen if lives < 0 
+  - Goes to winScreen if Players player points >=20
 - gameoverScreen
   - Shows Game Over message and Restart button
   - Goes back to Game Screen when Restart button is clicked
@@ -132,44 +118,45 @@ The game is won whenever the player reaches 20 points.
 
 ## Tasks
 - Setup git & GitHub
-- Create and connect files: main.js, player.js, obstacle.js, 
+- Create and connect files: main.js, game.js, elements.js, style.css, index.html
 - BuildDom in main.js
 - Create 4 screens in main.js
 - Create screen transitions in main.js
 - Create Game constructor
 - Create loop in game.js
-- Create Player constructor
-- Create Obstacle constructor
-- Draw obstacles in game.js
-- Move obstacles in game.js
+- Create Santa Claus constructor
+- Create snow flakes constructor
+- Create bombes constructor
+- Set elements in game.js 
+- Move elements in game.js
 - Move player in game.js
-- Check Collisions  in game.js
+- Check Catch  in game.js
 - Check game result in game.js
 - Add time and print it in game.js
-- Create bonus constructor and check bonus in game.js
 - Create scoreboard in main.js
-- Pause game in game.js
 - Add audios, img and fonts
+- Create css 
+- Create hTML
 
 
 ## Backlog
-- Time limit (must cross in less than 1 min)
-- Bonus life (extra life if eats a randomly generated corn)
+- Time limit (needs to reach 20 points in less than 3 min)
+- Bonus life 
+- Add nivel
 - Username registration and scoreboard (to compete again other players)
-- Pause game
-- Sounds and visual effects (when collides, looses or wins)
+- Sounds and visual effects (christmas music)
 
 
 ## Links
 
 ### Trello
-[Link url](https://trello.com/invite/b/0VjAAZ5H/f3ea8c975f1011a647c9bc726fc656af/ironhack-project-1)
+[Link url](https://miro.com/app/board/o9J_kgxH-zE=/)
 
 
 ### Git
-[Link Repo](https://github.com/caprosset/why-did-the-chicken-cross-the-road) -
-[Link Deploy](https://caprosset.github.io/why-did-the-chicken-cross-the-road/)
+[Link Repo](https://github.com/Luciemzt/jeu2noel) -
+[Link Deploy]()
 
 ### Slides
 URls for the project presentation (slides)
-[Link Slides.com](https://docs.google.com/presentation/d/1sd0kD1USru5METruDBION3qVaVu6O19CvSCoMSgvj7E/edit?usp=sharing)
+[Link Slides.com](https://slides.com/luciepani/jeu2noel/fullscreen)
