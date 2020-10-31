@@ -149,6 +149,9 @@ The game is won whenever the player reaches 20 points.
 ## Links
 
 ### Trello
+[Link url](https://trello.com/b/8d624hdI/ironhack)
+
+### Miro
 [Link url](https://miro.com/app/board/o9J_kgxH-zE=/)
 
 
