@@ -42,11 +42,10 @@ The game is won whenever the player reaches 20 points.
 - ctx
 - player
 - name
-- obstacles
+- elements
 - otherSide
 - gameIsOver
 - gameIsWon
-- bonus
 - loopCount
 - timeScore
 - pause
@@ -54,7 +53,7 @@ The game is won whenever the player reaches 20 points.
 **Methods**
 - start
 - startLoop
-- checkCollision
+- checkCatch
 - win
 - gameWon / gameOver
 - printLives
@@ -76,7 +75,7 @@ The game is won whenever the player reaches 20 points.
 **Methods**
 - draw
 - move
-- Catch Element
+- CatchElement
 - collidedWithScreen
 - removeLife
 - addLife
