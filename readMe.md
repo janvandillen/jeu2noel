@@ -3,17 +3,17 @@
 # Santa Claus & the christmas flakes
 
 ## Description
-Santa Claus & the snow Flakes is a game where a santa needs to catch as many flakes as possible to save christmas. 
-The snow flakes, and bombs are dropping from the sky. 
-The task is not as easy as it seems, he will need to avoid the dropping bombs. 
+Let's save Christmas is a game where a santa needs to catch as many  gifts as possible in order to save christmas. 
+The gifts, and the snow flakes are dropping from the sky. 
+The task is not as easy as it seems, he will need to avoid the dropping snow flakes. 
 If other level are created, the santa clause will have to avoid element at his level. 
 
 
 
 ## MVP (DOM - CANVAS)
-A santa Claus is picking snow flakes dropping from the sky. he can move in line fom left to right. 
-Dropping elements are snow flakes & bombs.  
-The game is over when the player eat 3 "bad elements". 
+A santa Claus is picking gifts dropping from the sky. he can move in line fom left to right. 
+Dropping elements are snow flakes &  gifts.  
+The game is over when the player eat 3 "snow flakes". 
 The game is won whenever the player reaches 20 points.
 
 
@@ -23,6 +23,7 @@ The game is won whenever the player reaches 20 points.
 3. game.js
 4. player.js
 5. elements.js
+6. style.css
 
 ### 1. index.html file
 
@@ -124,8 +125,8 @@ The game is won whenever the player reaches 20 points.
 - Create Game constructor
 - Create loop in game.js
 - Create Santa Claus constructor
-- Create snow flakes constructor
-- Create bombes constructor
+- Create Gifts constructor
+- Create Snow Flakes constructor
 - Set elements in game.js 
 - Move elements in game.js
 - Move player in game.js
@@ -139,7 +140,7 @@ The game is won whenever the player reaches 20 points.
 
 
 ## Backlog
-- Time limit (needs to reach 20 points in less than 3 min)
+- Time limit (needs to reach 20 points in less than 3 min) - if time 
 - Bonus life 
 - Add nivel
 - Username registration and scoreboard (to compete again other players)
