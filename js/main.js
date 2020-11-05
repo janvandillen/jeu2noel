@@ -5,3 +5,8 @@ const main = () => {
     const main = document.querySelector("main");
     main.innerHTML = html;
   };
+
+
+  function createStartScreen (){
+    StartScreen 
+  }
