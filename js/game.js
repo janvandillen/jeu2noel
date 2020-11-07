@@ -17,30 +17,7 @@ const setPlayerDirection = (event) => {
       }
     };
     
-    checkCollisionSnowflakes(flakes) {
-      const collideTop = this.y > flakes.y; 
-      if (collideTop) {
-        return true;
-      }
-      return false;
-    }
-    loseLive() {
-      this.lives--;
-    }
-  }
-
-  checkCollisionGifts(good) {
-    const collideTop = this.y > good.x;
-    if (collideTop) {
-      return true;
-    }
-    return false;
-  }
-  gainPoint(){
-    this.point++;
-  }
 
     function checkGameOver(){}
     function CheckGameWone(){}
-
   }

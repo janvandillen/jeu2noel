@@ -16,7 +16,7 @@ class SnowFlakes {
     }
   
     move() {
-     this.y = this.y + this.speed
+     this.y = this.y + this.speed;
     }
   }
 
@@ -38,7 +38,7 @@ class Gifts {
     }
   
     move() {
-      this.y = this.y + this.speed
+      this.y = this.y + this.speed;
      }
     }
 
