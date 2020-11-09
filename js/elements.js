@@ -1,12 +1,12 @@
 "use strict";
 
 class SnowFlake {
-  constructor(canvas) {
+  constructor(canvas,x) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.x = 200;
+    this.x = x;
     this.y = this.canvas.height;
-    this.speed = 2;
+    this.speed = 7;
     this.snowFlakeImage = new Image();
     this.direction = 1;
   }
@@ -24,10 +24,10 @@ class SnowFlake {
 }
 
 class Gift {
-  constructor(canvas) {
+  constructor(canvas,x) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.x = 0;
+    this.x = x;
     this.y = this.canvas.height;
     this.speed = 2;
     this.direction = 1;

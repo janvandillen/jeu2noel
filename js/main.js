@@ -24,26 +24,34 @@ const main = () => {
 
     const width = document.querySelector("#board").offsetWidth;
     const height = document.querySelector("#board").offsetHeight;
-
     const canvasElement = document.querySelector("canvas");
-
     canvasElement.setAttribute("width", width);
     canvasElement.setAttribute("height", height);
 
     const game = new Game(canvasElement);
 
-  //  game.gameOverCallback(buildGameOver);
+    //  game.gameOverCallback(buildGameOver);
 
     game.startLoop();
-
+    
     const setPlayerDirection = (event) => {
-      if (event.code === "ArrowLeft") {
-        game.player.setDirection(-1);
-      } else if (event.code === "ArrowRight") {
-        game.player.setDirection(1);
-      }
+      const keyz = {ArrowLeft: false, ArrowRight: false};
+      document.addEventListener("keydown", (e) => {
+        if (e.code in keyz) {
+          keyz[event.code] = true;
+        }
+         return this.player.x + this.player.speed
+      });
+      document.addEventListener("keyup", (e) => {
+        if (e.code in keyz) {
+          keyz[event.code] = false;
+        }
+        return this.player.x + this.player.speed
+      });
     };
+    document.addEventListener("keydown", setPlayerDirection);
   };
+
   const buildGameOver = () => {
     buildDom(`
             <section class="game-over">
