@@ -4,12 +4,10 @@ h1 {
 
 canvas {
     border: 1px solid black;
-    background: white;
+    background: black;
     background-image: url('http://1986.1.9.pic.centerblog.net/4d63ab43.jpg');  
-  }
-
-  board{
-      height: 450;
-      width: 700;
-  }
-
+}
+#board{
+    width: 700px;
+    height: 1200px;
+}

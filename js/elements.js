@@ -5,8 +5,8 @@ class SnowFlake {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
-    this.y = this.canvas.height;
-    this.speed = 7;
+    this.y = 0;
+    this.speed = 4;
     this.snowFlakeImage = new Image();
     this.direction = 1;
   }
@@ -28,8 +28,8 @@ class Gift {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
-    this.y = this.canvas.height;
-    this.speed = 2;
+    this.y = 0;
+    this.speed = 3;
     this.direction = 1;
     this.giftImage = new Image();
   }
