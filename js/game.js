@@ -9,7 +9,7 @@ class Game {
     this.score = [];
     this.lives = [];
     this.isGameOver = false;
-}
+  }
 
   startLoop() {
     this.player = new Player(this.canvas);
@@ -36,12 +36,12 @@ class Game {
   }
   drawScore() {
     this.ctx.font = "16px Arial";
-    this.ctx.fillStyle = 'white';
+    this.ctx.fillStyle = "white";
     this.ctx.fillText("${this.player.score}", 10, 20);
   }
   drawLives() {
     this.ctx.font = "16px Arial";
-    this.ctx.fillStyle = 'white';
+    this.ctx.fillStyle = "white";
     this.ctx.fillText("${this.player.lives}", 10, 40);
   }
 
@@ -71,13 +71,13 @@ class Game {
     });
   }
   checkCollisionWithSnowFlakes(snowFlake) {
-    if (this.snowFlakes.x > this.x) {
+    if (this.snowFlakes.x > 520) {
       return true;
     }
     return false;
   }
   checkCollisionWithGift(gift) {
-    if (this.gifts.x > this.x) {
+    if (this.gifts.x > 520) {
       return true;
     }
     return false;
@@ -100,7 +100,7 @@ class Game {
         this.gifts.splice(index, 1);
         if (this.player.score >= 10) {
           this.isGameWone = true;
-          this.onGameWone()
+          this.onGameWone();
         }
       }
     });
