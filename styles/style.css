@@ -1,17 +1,41 @@
 h1 {
     background-color: white;
+    text-align: center;
+    color: red; 
+    font-weight: bold;font-size: 42px;  
 }
+
+body {
+    font-family: Lucida Console;
+    margin: 0;
+    text-align: center;
+  }
 
 canvas {
     border: 1px solid black;
-    background: black;
-    background-image: url('http://1986.1.9.pic.centerblog.net/4d63ab43.jpg');  
+    background-image: url('http://www.fond-ecran.net/fonds/noel_015.jpg');
+    background-width: auto;
+    background-height: auto; 
+    background-repeat: none; 
+    position: absolute;
+    top: 30px;
 }
 #board{
     width: 700px;
-    height: 1200px;
+    height: 1000px;
 }
 
-h1 {
+button {
+    background-color: #4CAF50; /* Green */
+    font-weight: bold;
+    border: none;
+    color: white;
+    padding: 15px 32px;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 23px;  
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-shadow: #06662e 1px 1px, #06662e -1px 1px, #06662e -1px -1px, #06662e 1px -1px;
 }

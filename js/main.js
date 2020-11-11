@@ -9,8 +9,8 @@ const main = () => {
     buildDom(`
       <h1>Let's save Christmas!</h1>
       <img src="https://longeatonroundtable.files.wordpress.com/2014/12/santa-help-wanted.jpg?w=640" alt="" class="logo-img" />
-      <p>Use the left and right arrow to move the Santa Claus!</p>
-      <button>StartGame</button>
+      <p>Let's catch 20 Gifts, while avoiding the snowflakes! <br>Use the left and right arrow to move the Santa Claus. </p>
+      <button>Start Game</button>
       `);
     const startButton = document.querySelector("button");
     startButton.addEventListener("click", buildGameScreen);
@@ -19,6 +19,7 @@ const main = () => {
     buildDom(`
     <div id="board">
     <canvas id="canvas"></canvas>
+    <p> 
   </div>
         `);
 

@@ -4,9 +4,9 @@ class Player {
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.x = 350;
-    this.y = 5;
-    this.speed = 2;
+    this.x = 700;
+    this.y = 520;
+    this.speed = 5;
     this.lives = 3;
     this.score = 0;
     this.playerImage = new Image();

@@ -6,11 +6,9 @@ class Game {
     this.player;
     this.snowFlakes = [];
     this.gifts = [];
-    this.score = {};
+    this.score = [];
+    this.lives = [];
     this.isGameOver = false;
-    this.score = setInterval(() => {
-      this.score += 1
-  }, 100);
 }
 
   startLoop() {
@@ -36,12 +34,15 @@ class Game {
     };
     window.requestAnimationFrame(loop);
   }
-
   drawScore() {
-    this.ctx.fillText("${this.player.score}", 500, 500);
+    this.ctx.font = "16px Arial";
+    this.ctx.fillStyle = 'white';
+    this.ctx.fillText("${this.player.score}", 10, 20);
   }
   drawLives() {
-    this.ctx.fillText("${this.player.lives}", 500, 500);
+    this.ctx.font = "16px Arial";
+    this.ctx.fillStyle = 'white';
+    this.ctx.fillText("${this.player.lives}", 10, 40);
   }
 
   updateCanvas() {
@@ -70,13 +71,13 @@ class Game {
     });
   }
   checkCollisionWithSnowFlakes(snowFlake) {
-    if (this.snowFlakes.x >= 520) {
+    if (this.snowFlakes.x > this.x) {
       return true;
     }
     return false;
   }
   checkCollisionWithGift(gift) {
-    if (this.gifts.x >= 520) {
+    if (this.gifts.x > this.x) {
       return true;
     }
     return false;
@@ -97,7 +98,7 @@ class Game {
       if (this.checkCollisionWithGift(gift)) {
         this.player.score++;
         this.gifts.splice(index, 1);
-        if (this.player.score >= 30) {
+        if (this.player.score >= 10) {
           this.isGameWone = true;
           this.onGameWone()
         }
