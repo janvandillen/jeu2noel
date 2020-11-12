@@ -29,7 +29,7 @@ class Gift {
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
     this.y = 0;
-    this.speed = 3;
+    this.speed = 60;
     this.direction = 1;
     this.giftImage = new Image();
   }
@@ -37,7 +37,7 @@ class Gift {
   drawGift() {
     this.giftImage.src =
       "./img/gift.png";
-    this.ctx.drawImage(this.giftImage, this.x, this.y, 150, 150);
+    this.ctx.drawImage(this.giftImage, this.x, this.y, 80, 80);
   }
 
   move() {

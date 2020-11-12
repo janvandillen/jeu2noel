@@ -9,17 +9,17 @@ class Game {
     this.score = [];
     this.lives = [];
     this.isGameOver = false;
+    this.isGameWone = false;
   }
-
   startLoop() {
     this.player = new Player(this.canvas);
 
     const loop = () => {
-      if (Math.random() > 0.97) {
+      if (Math.random() > 0.994) {
         const x = Math.random() * this.canvas.width;
         this.snowFlakes.push(new SnowFlake(this.canvas, x));
       }
-      if (Math.random() > 0.99) {
+      if (Math.random() > 0.98) {
         const x = Math.random() * this.canvas.width;
         this.gifts.push(new Gift(this.canvas, x));
       }
@@ -31,18 +31,28 @@ class Game {
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
       }
+      if (!this.isGameWone) {
+        window.requestAnimationFrame(loop);
+      }
     };
     window.requestAnimationFrame(loop);
   }
   drawScore() {
-    this.ctx.font = "16px Arial";
+    let imgLives = new Image();
+    imgLives.src = "./img/score.png";
+    this.ctx.drawImage(imgLives, 10, 2, 20, 20);
+    this.ctx.font = "bold 20px Arial";
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`${this.player.score}`, 10, 20);
+    this.ctx.fillText(`${this.player.score}`, 40, 20);
+    this.ctx.fill;
   }
   drawLives() {
-    this.ctx.font = "16px Arial";
+    let imgLives = new Image();
+    imgLives.src = "./img/coeur.jpg";
+    this.ctx.drawImage(imgLives, 10, 25, 20, 20);
+    this.ctx.font = "bold 20px Arial";
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`${this.player.lives}`, 10, 40);
+    this.ctx.fillText(`${this.player.lives}`, 40, 40);
   }
 
   updateCanvas() {
@@ -71,25 +81,25 @@ class Game {
     });
   }
   checkCollisionWithSnowFlakes(snowFlake) {
-      if(this.player.y < snowFlake.y + 80){
-        return true;
-    }
-    return false;
-  };
-  checkCollisionWithGift(gift) {
-    if (this.player.y < gift.y + 150){
+    if (this.player.y > snowFlake.y + 80) {
       return true;
     }
     return false;
-  };
+  }
+  checkCollisionWithGift(gift) {
+    if (this.player.y > gift.y + 80) {
+      return true;
+    }
+    return false;
+  }
   checkAllCollisions() {
     this.player.checkScreen();
     this.snowFlakes.forEach((snowFlake, index) => {
       if (this.checkCollisionWithSnowFlakes(snowFlake)) {
         this.player.loseLive();
-        console.log(this.player.lives)
+        console.log(this.player.lives);
         this.snowFlakes.splice(index, 1);
-        console.log(index)
+        console.log(index);
         if (this.player.lives === 0) {
           this.isGameOver = true;
           this.onGameOver();
@@ -106,8 +116,12 @@ class Game {
         }
       }
     });
+
   }
   gameOverCallback(callback) {
     this.onGameOver = callback;
+  }
+  gameWoneCallback(callback) {
+    this.onGameWone = callback;
   }
 }

@@ -5,7 +5,7 @@ class Player {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
     this.x = this.canvas.width/2;
-    this.size= 300;
+    this.size= 150;
     this.y = this.canvas.height- this.size;
     this.speed = 5;
     this.lives = 3; 

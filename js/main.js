@@ -1,5 +1,5 @@
 "use-strict";
-var audio = new Audio("./img/video game christmas music.mp3");
+//var audio = new Audio("./img/video game christmas music.mp3");
 //audio.play()
 
 const main = () => {
@@ -34,7 +34,7 @@ const main = () => {
     const game = new Game(canvasElement);
 
     game.gameOverCallback(buildGameOver);
-
+    game.gameWoneCallback(buildGameWone);
     game.startLoop();
 
     const setPlayerDirection = (event) => {
@@ -59,6 +59,7 @@ const main = () => {
     restartButton.addEventListener("click", buildGameScreen);
   };
   buildSplashScreen();
+
   const buildGameWone = () => {
     buildDom(`
             <section class="game-wone">
