@@ -1,4 +1,6 @@
 "use-strict";
+var audio = new Audio("./img/video game christmas music.mp3");
+//audio.play()
 
 const main = () => {
   const buildDom = (html) => {
@@ -23,25 +25,25 @@ const main = () => {
   </div>
         `);
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = document.getElementById("board").offsetWidth;
+    const height = document.getElementById("board").offsetHeight;
     const canvasElement = document.querySelector("canvas");
     canvasElement.setAttribute("width", width);
-    canvasElement.setAttribute("height", height); 
+    canvasElement.setAttribute("height", height);
 
     const game = new Game(canvasElement);
 
     game.gameOverCallback(buildGameOver);
 
     game.startLoop();
-    
+
     const setPlayerDirection = (event) => {
-        if (event.key ==="ArrowRight") {
-          game.player.setDirection(1)
-        } else if (event.key === "ArrowLeft") {
-          game.player.setDirection(-1)
-        }
-      };
+      if (event.key === "ArrowRight") {
+        game.player.setDirection(1);
+      } else if (event.key === "ArrowLeft") {
+        game.player.setDirection(-1);
+      }
+    };
     document.addEventListener("keydown", setPlayerDirection);
   };
 
@@ -65,13 +67,10 @@ const main = () => {
                 <button>Restart</button>
             </section>
         `);
-  
+
     const restartButton = document.querySelector("button");
     restartButton.addEventListener("click", buildGameScreen);
   };
   buildSplashScreen();
 };
 window.addEventListener("load", main);
-
-
-

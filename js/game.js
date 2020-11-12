@@ -15,7 +15,7 @@ class Game {
     this.player = new Player(this.canvas);
 
     const loop = () => {
-      if (Math.random() > 0.98) {
+      if (Math.random() > 0.97) {
         const x = Math.random() * this.canvas.width;
         this.snowFlakes.push(new SnowFlake(this.canvas, x));
       }
@@ -36,13 +36,13 @@ class Game {
   }
   drawScore() {
     this.ctx.font = "16px Arial";
-    this.ctx.fillStyle = "white";
-    this.ctx.fillText("${this.player.score}", 10, 20);
+    this.ctx.fillStyle = "black";
+    this.ctx.fillText(`${this.player.score}`, 10, 20);
   }
   drawLives() {
     this.ctx.font = "16px Arial";
-    this.ctx.fillStyle = "white";
-    this.ctx.fillText("${this.player.lives}", 10, 40);
+    this.ctx.fillStyle = "black";
+    this.ctx.fillText(`${this.player.lives}`, 10, 40);
   }
 
   updateCanvas() {
@@ -71,23 +71,25 @@ class Game {
     });
   }
   checkCollisionWithSnowFlakes(snowFlake) {
-    if (this.snowFlakes.x > 520) {
-      return true;
+      if(this.player.y < snowFlake.y + 80){
+        return true;
     }
     return false;
-  }
+  };
   checkCollisionWithGift(gift) {
-    if (this.gifts.x > 520) {
+    if (this.player.y < gift.y + 150){
       return true;
     }
     return false;
-  }
+  };
   checkAllCollisions() {
     this.player.checkScreen();
     this.snowFlakes.forEach((snowFlake, index) => {
       if (this.checkCollisionWithSnowFlakes(snowFlake)) {
         this.player.loseLive();
+        console.log(this.player.lives)
         this.snowFlakes.splice(index, 1);
+        console.log(index)
         if (this.player.lives === 0) {
           this.isGameOver = true;
           this.onGameOver();
@@ -98,7 +100,7 @@ class Game {
       if (this.checkCollisionWithGift(gift)) {
         this.player.score++;
         this.gifts.splice(index, 1);
-        if (this.player.score >= 10) {
+        if (this.player.score >= 15) {
           this.isGameWone = true;
           this.onGameWone();
         }

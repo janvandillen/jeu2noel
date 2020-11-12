@@ -6,14 +6,14 @@ class SnowFlake {
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
     this.y = 0;
-    this.speed = 4;
+    this.speed = 1;
     this.snowFlakeImage = new Image();
     this.direction = 1;
   }
   drawSnowFlake() {
     this.snowFlakeImage.src =
-      "https://i.pinimg.com/474x/0b/1a/8f/0b1a8f342eb777231fa8f4331010abcc.jpg";
-    this.ctx.drawImage(this.snowFlakeImage, this.x, this.y, 20, 20);
+      "./img/flocon.png";
+    this.ctx.drawImage(this.snowFlakeImage, this.x, this.y, 80, 80);
   }
   move() {
     this.y = this.y + this.direction * this.speed;
@@ -36,8 +36,8 @@ class Gift {
 
   drawGift() {
     this.giftImage.src =
-      "https://www.teteamodeler.com/assets/coloriages/pixel-art-cadeau-de-nol.jpeg";
-    this.ctx.drawImage(this.giftImage, this.x, this.y, 40, 40);
+      "./img/gift.png";
+    this.ctx.drawImage(this.giftImage, this.x, this.y, 150, 150);
   }
 
   move() {

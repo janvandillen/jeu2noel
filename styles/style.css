@@ -13,16 +13,17 @@ body {
 
 canvas {
     border: 1px solid black;
-    background-image: url('http://www.fond-ecran.net/fonds/noel_015.jpg');
-    background-width: auto;
-    background-height: auto; 
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/07275d2a-d6ff-4885-8290-22133d9ce495/d1ry6sr-5756e8ed-9272-41f9-9188-a1fa2a3a8bd7.jpg/v1/fill/w_1131,h_707,q_70,strp/winter_wallpaper_by_solitude12_d1ry6sr-pre.jpg');
+    background-size: cover;
+    //background-width: 80%;
+    //background-height: 80%; 
     background-repeat: none; 
     position: absolute;
     top: 30px;
 }
 #board{
-    width: 700px;
-    height: 1000px;
+    width: 1200px;
+    height: 900px;
 }
 
 button {
