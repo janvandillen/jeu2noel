@@ -11,7 +11,7 @@ const main = () => {
     buildDom(`
       <h1>Let's save Christmas!</h1>
       <img src="https://longeatonroundtable.files.wordpress.com/2014/12/santa-help-wanted.jpg?w=640" alt="" class="logo-img" />
-      <p>Let's catch 20 Gifts, while avoiding the snowflakes! <br>Use the left and right arrow to move the Santa Claus. </p>
+      <p>Let's catch 15 Gifts, while avoiding the snowflakes! <br>Use the left and right arrow to move the Santa Claus. </p>
       <button>Start Game</button>
       `);
     const startButton = document.querySelector("button");
@@ -34,7 +34,9 @@ const main = () => {
     const game = new Game(canvasElement);
 
     game.gameOverCallback(buildGameOver);
-    game.gameWoneCallback(buildGameWone);
+
+    game.gameWonCallback(buildGameWon);
+
     game.startLoop();
 
     const setPlayerDirection = (event) => {
@@ -51,6 +53,7 @@ const main = () => {
     buildDom(`
             <section class="game-over">
                 <h1>Game Over</h1>
+                <p>Let's try, one more time?<p>
                 <button>Restart</button>
             </section>
         `);
@@ -60,7 +63,7 @@ const main = () => {
   };
   buildSplashScreen();
 
-  const buildGameWone = () => {
+  const buildGameWon = () => {
     buildDom(`
             <section class="game-wone">
                 <h1>Game Wone</h1>

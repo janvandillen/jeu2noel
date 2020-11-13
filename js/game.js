@@ -9,7 +9,7 @@ class Game {
     this.score = [];
     this.lives = [];
     this.isGameOver = false;
-    this.isGameWone = false;
+    this.isGameWon = false;
   }
   startLoop() {
     this.player = new Player(this.canvas);
@@ -31,7 +31,7 @@ class Game {
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
       }
-      if (!this.isGameWone) {
+      if (!this.isGameWon) {
         window.requestAnimationFrame(loop);
       }
     };
@@ -81,13 +81,33 @@ class Game {
     });
   }
   checkCollisionWithSnowFlakes(snowFlake) {
-    if (this.player.y > snowFlake.y + 80) {
+    const snowFlakeBottomBorder = snowFlake.y + 80;
+    const snowFlakeLeft = snowFlake.x
+    const snowFlakeRight = snowFlake.x + 80
+    const santaTopBorder = this.player.y - this.player.size / 2
+    const santaLeftBorder = this.player.x - this.player.size / 2
+    const santaRightBorder = this.player.x + this.player.size / 2
+    const collisionLeft =  santaLeftBorder < snowFlakeRight
+    const collisionRight = santaRightBorder > snowFlakeLeft
+    const collisionTopBorder = santaTopBorder < snowFlakeBottomBorder
+   const collisionBottom = snowFlakeBottomBorder > santaTopBorder
+    if (collisionLeft && collisionRight && collisionTopBorder && collisionBottom) {
       return true;
     }
     return false;
   }
   checkCollisionWithGift(gift) {
-    if (this.player.y > gift.y + 80) {
+    const giftBottomBorder = gift.y + 80;
+    const giftLeft = gift.x
+    const giftRight = gift.x + 80
+    const santaTopBorder = this.player.y - this.player.size / 2
+    const santaLeftBorder = this.player.x - this.player.size / 2
+    const santaRightBorder = this.player.x + this.player.size / 2
+    const collisionLeft =  santaLeftBorder < giftRight
+    const collisionRight = santaRightBorder > giftLeft
+    const collisionTopBorder = santaTopBorder < giftBottomBorder
+    const collisionBottom = giftBottomBorder > santaTopBorder
+    if (collisionLeft && collisionRight && collisionTopBorder && collisionBottom) {
       return true;
     }
     return false;
@@ -111,8 +131,8 @@ class Game {
         this.player.score++;
         this.gifts.splice(index, 1);
         if (this.player.score >= 15) {
-          this.isGameWone = true;
-          this.onGameWone();
+          this.isGameWon = true;
+          this.onGameWon();
         }
       }
     });
@@ -121,7 +141,7 @@ class Game {
   gameOverCallback(callback) {
     this.onGameOver = callback;
   }
-  gameWoneCallback(callback) {
-    this.onGameWone = callback;
+  gameWonCallback(callback) {
+    this.onGameWon = callback;
   }
 }
