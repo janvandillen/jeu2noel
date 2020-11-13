@@ -1,44 +1,50 @@
 "use strict";
 
-class SnowFlakes {
-  constructor(canvas, y) {
+class SnowFlake {
+  constructor(canvas,x) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.x = Math.floor(Math.random()*this.canvas.width);
+    this.x = x;
     this.y = 0;
-    this.speed = 5;
-    this.snowFlakesImage = new Image(), 
+    this.speed = 1;
+    this.snowFlakeImage = new Image();
+    this.direction = 1;
   }
-      
-    drawSnowFlakes() {
-      this.snowflakesImage.src = "https://i.pinimg.com/474x/0b/1a/8f/0b1a8f342eb777231fa8f4331010abcc.jpg";
-      this.ctx.drawImage(this.snowflakesImage,this.x, this.y, 40, 40);
-    }
-  
-    move() {
-     this.y = this.y + this.speed;
-    }
+  drawSnowFlake() {
+    this.snowFlakeImage.src =
+      "./img/flocon.png";
+    this.ctx.drawImage(this.snowFlakeImage, this.x, this.y, 80, 80);
+  }
+  move() {
+    this.y = this.y + this.direction * this.speed;
+  }
+  setDirection(direction) {
+    this.direction = direction;
+  }
+}
+
+class Gift {
+  constructor(canvas,x) {
+    this.canvas = canvas;
+    this.ctx = this.canvas.getContext("2d");
+    this.x = x;
+    this.y = 0;
+    this.speed = 3;
+    this.direction = 1;
+    this.giftImage = new Image();
   }
 
-class Gifts {
-    constructor(canvas, y) {     
-      this.canvas = canvas;
-      this.ctx = this.canvas.getContext("2d");
-      this.x =  Math.floor(Math.random()*this.canvas.width);
-      this.y = 0;
-      this.speed = 5;
-      this.direction = 1;
-      this.giftImage = new Image()
-      this 
-    }
-  
-    drawGifts() {
-      thisGiftImage.src = "https://www.teteamodeler.com/assets/coloriages/pixel-art-cadeau-de-nol.jpeg";
-      this.ctx.drawImage(this.giftImage,this.x, this.y, 40, 40);
-    }
-  
-    move() {
-      this.y = this.y + this.speed;
-     }
-    }
+  drawGift() {
+    this.giftImage.src =
+      "./img/gift.png";
+    this.ctx.drawImage(this.giftImage, this.x, this.y, 150, 150);
+  }
 
+  move() {
+    this.y = this.y + this.direction + this.speed;
+  }
+
+  setDirection(direction) {
+    this.direction = direction;
+  }
+}
