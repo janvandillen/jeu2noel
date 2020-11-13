@@ -9,17 +9,17 @@ class Game {
     this.score = [];
     this.lives = [];
     this.isGameOver = false;
+    this.isGameWon = false;
   }
-
   startLoop() {
     this.player = new Player(this.canvas);
 
     const loop = () => {
-      if (Math.random() > 0.97) {
+      if (Math.random() > 0.994) {
         const x = Math.random() * this.canvas.width;
         this.snowFlakes.push(new SnowFlake(this.canvas, x));
       }
-      if (Math.random() > 0.99) {
+      if (Math.random() > 0.98) {
         const x = Math.random() * this.canvas.width;
         this.gifts.push(new Gift(this.canvas, x));
       }
@@ -31,18 +31,28 @@ class Game {
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
       }
+      if (!this.isGameWon) {
+        window.requestAnimationFrame(loop);
+      }
     };
     window.requestAnimationFrame(loop);
   }
   drawScore() {
-    this.ctx.font = "16px Arial";
+    let imgLives = new Image();
+    imgLives.src = "./img/score.png";
+    this.ctx.drawImage(imgLives, 10, 2, 20, 20);
+    this.ctx.font = "bold 20px Arial";
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`${this.player.score}`, 10, 20);
+    this.ctx.fillText(`${this.player.score}`, 40, 20);
+    this.ctx.fill;
   }
   drawLives() {
-    this.ctx.font = "16px Arial";
+    let imgLives = new Image();
+    imgLives.src = "./img/coeur.jpg";
+    this.ctx.drawImage(imgLives, 10, 25, 20, 20);
+    this.ctx.font = "bold 20px Arial";
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`${this.player.lives}`, 10, 40);
+    this.ctx.fillText(`${this.player.lives}`, 40, 40);
   }
 
   updateCanvas() {
@@ -71,25 +81,45 @@ class Game {
     });
   }
   checkCollisionWithSnowFlakes(snowFlake) {
-      if(this.player.y < snowFlake.y + 80){
-        return true;
-    }
-    return false;
-  };
-  checkCollisionWithGift(gift) {
-    if (this.player.y < gift.y + 150){
+    const snowFlakeBottomBorder = snowFlake.y + 80;
+    const snowFlakeLeft = snowFlake.x
+    const snowFlakeRight = snowFlake.x + 80
+    const santaTopBorder = this.player.y - this.player.size / 2
+    const santaLeftBorder = this.player.x - this.player.size / 2
+    const santaRightBorder = this.player.x + this.player.size / 2
+    const collisionLeft =  santaLeftBorder < snowFlakeRight
+    const collisionRight = santaRightBorder > snowFlakeLeft
+    const collisionTopBorder = santaTopBorder < snowFlakeBottomBorder
+   const collisionBottom = snowFlakeBottomBorder > santaTopBorder
+    if (collisionLeft && collisionRight && collisionTopBorder && collisionBottom) {
       return true;
     }
     return false;
-  };
+  }
+  checkCollisionWithGift(gift) {
+    const giftBottomBorder = gift.y + 80;
+    const giftLeft = gift.x
+    const giftRight = gift.x + 80
+    const santaTopBorder = this.player.y - this.player.size / 2
+    const santaLeftBorder = this.player.x - this.player.size / 2
+    const santaRightBorder = this.player.x + this.player.size / 2
+    const collisionLeft =  santaLeftBorder < giftRight
+    const collisionRight = santaRightBorder > giftLeft
+    const collisionTopBorder = santaTopBorder < giftBottomBorder
+    const collisionBottom = giftBottomBorder > santaTopBorder
+    if (collisionLeft && collisionRight && collisionTopBorder && collisionBottom) {
+      return true;
+    }
+    return false;
+  }
   checkAllCollisions() {
     this.player.checkScreen();
     this.snowFlakes.forEach((snowFlake, index) => {
       if (this.checkCollisionWithSnowFlakes(snowFlake)) {
         this.player.loseLive();
-        console.log(this.player.lives)
+        console.log(this.player.lives);
         this.snowFlakes.splice(index, 1);
-        console.log(index)
+        console.log(index);
         if (this.player.lives === 0) {
           this.isGameOver = true;
           this.onGameOver();
@@ -101,13 +131,17 @@ class Game {
         this.player.score++;
         this.gifts.splice(index, 1);
         if (this.player.score >= 15) {
-          this.isGameWone = true;
-          this.onGameWone();
+          this.isGameWon = true;
+          this.onGameWon();
         }
       }
     });
+
   }
   gameOverCallback(callback) {
     this.onGameOver = callback;
+  }
+  gameWonCallback(callback) {
+    this.onGameWon = callback;
   }
 }
